@@ -26,7 +26,15 @@ jobs:
 
   web-tests:
     name: Web tests
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        runner:
+          - ubuntu-latest
+          - blacksmith-2vcpu-ubuntu-2204
+          - blacksmith-4vcpu-ubuntu-2204
+          - blacksmith-8vcpu-ubuntu-2204
+          - blacksmith-16vcpu-ubuntu-2204
     steps:
       - uses: actions/checkout@v3
 
