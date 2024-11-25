@@ -12,7 +12,7 @@ jobs:
     name: Format Branch
     # If the PR review comment contains the string 'CI format please', run this job
     if: ${{ contains(github.event.comment.body, 'CI format please') }}
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     steps:
       - uses: actions/checkout@v3
         with:
@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: useblacksmith/setup-node@v5
         with:
           node-version: '20'
           cache: npm
